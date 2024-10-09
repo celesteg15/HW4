@@ -1,4 +1,3 @@
-
 /**********************************************************
  *
  * Homework #4 (Programming Assignment). This assignment has two parts:

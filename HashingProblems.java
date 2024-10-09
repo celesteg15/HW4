@@ -41,6 +41,7 @@ class HashingProblems {
          * returning 0.0/0.0 IS correct (which would return a non-number).
          */
 
+        
          return 0.0 / 0.0;
   }
 
