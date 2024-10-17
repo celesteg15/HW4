@@ -40,8 +40,9 @@ class HashingProblems {
          * returning 0.0 is NOT correct, as that is not the average value. Whereas
          * returning 0.0/0.0 IS correct (which would return a non-number).
          */
-
-        
+        double sum = 0;
+        int count = 0;
+                
          return 0.0 / 0.0;
   }
 

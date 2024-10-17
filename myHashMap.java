@@ -230,7 +230,23 @@ class myHashMap<K,V> {
          * the return value discussion in this method's prologue to make sure the correct
          * return value is returned the invoking function based on the remove outcome.
          */
+        int index = getBucketIndex(key);
+        HashNode<K,V> head = bucket.get(index);
+        HashNode<K, V> prev = null; 
 
+        while (head != null) { // chech is to check if the node we're already on has a key
+            if (head.key.equals(key)){
+                if(prev != null){
+                    prev.next = head.next;
+                } else{
+                    bucket.set(index, head.next);
+                }
+                size--;
+                return head.value;
+            }
+            prev = head;
+            head = head.next;
+        }
         return null;
     }
 
@@ -405,7 +421,8 @@ class myHashMap<K,V> {
          * Make sure you return the proper value based on the outcome of this method's
          * replace (see method's prologue above).
          */
-
+        int index = getBucketIndex(key);
+        HashNode<K,V> head = bucket.get(index);
         return val;
     }
 
