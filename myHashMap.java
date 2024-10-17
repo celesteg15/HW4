@@ -234,7 +234,7 @@ class myHashMap<K,V> {
         HashNode<K,V> head = bucket.get(index);
         HashNode<K, V> prev = null; 
 
-        while (head != null) { // chech is to check if the node we're already on has a key
+        while (head != null) { // is to check if the node we're already on has a key
             if (head.key.equals(key)){
                 if(prev != null){
                     prev.next = head.next;
@@ -423,6 +423,14 @@ class myHashMap<K,V> {
          */
         int index = getBucketIndex(key);
         HashNode<K,V> head = bucket.get(index);
+        while (head != null){
+            if (head.key.equals(key)) {
+                V old = head.value; 
+                head.value = val;
+                return old;
+            }
+            head = head.next;
+        }
         return val;
     }
 
