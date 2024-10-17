@@ -422,6 +422,7 @@ class myHashMap<K,V> {
          * replace (see method's prologue above).
          */
         int index = getBucketIndex(key);
+
         HashNode<K,V> head = bucket.get(index);
 
 
@@ -434,7 +435,7 @@ class myHashMap<K,V> {
             head = head.next;
         }
         
-        return val;
+        return null;
     } 
 
     
@@ -461,8 +462,21 @@ class myHashMap<K,V> {
          * This method should apply the precondition (aka, the Key already exists with the
          * value 'oldval', and is so, it SHOULD call replace(K, V) for code reuse.
          */
+        int index = getBucketIndex(key);
 
-        return false;
+        HashNode<K, V> head = bucket.get(index);
+        
+        while (head != null) {
+            if (head.key.equals(key)) {
+                if (head.value.equals(oldVal)){
+                    head.value = newVal;
+                    return true;
+                }
+            return false;
+            }
+            head = head.next;
+        }
+       return false;
     }
 
 
