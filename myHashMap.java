@@ -423,16 +423,19 @@ class myHashMap<K,V> {
          */
         int index = getBucketIndex(key);
         HashNode<K,V> head = bucket.get(index);
+
+
         while (head != null){
             if (head.key.equals(key)) {
-                V old = head.value; 
+                V oldValue= head.value; 
                 head.value = val;
-                return old;
+                return oldValue;
             }
             head = head.next;
         }
+        
         return val;
-    }
+    } 
 
     
     /**
