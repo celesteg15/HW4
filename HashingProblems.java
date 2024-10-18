@@ -42,9 +42,21 @@ class HashingProblems {
          */
         double sum = 0;
         int count = 0;
-                
-         return 0.0 / 0.0;
-  }
+        
+        for ( int key : array ) {
+            if (map.containsKey(key)) {
+                sum += map.get(key);
+                count++;
+            }
+        }
+
+        if (count == 0){
+             return 0.0 / 0.0;
+
+        }
+
+        return sum / count;
+    }
 
 
     /*
@@ -54,7 +66,7 @@ class HashingProblems {
      * values of the corresponding keys that are odd.
      */
 
-  public ArrayList<String> odd(HashMap<Integer, String> map) {
+    public ArrayList<String> odd(HashMap<Integer, String> map) {
     
       ArrayList<String> result = new ArrayList<>();
 
@@ -63,10 +75,14 @@ class HashingProblems {
        *
        * Hint: Consider iterating over the HashMap using the keySet method.
        */
-
-
-      return result;
-  }
+        for ( int key : map.keySet() ) {
+            if (key % 2 != 0) { //for odd
+                result.add(map.get(key)); //add to result list
+            }
+        }
+        
+        return result;
+    }
 
 
   /*
@@ -111,8 +127,24 @@ class HashingProblems {
       /*
        * ADD YOUR CODE HERE
        */
+    HashSet<Integer> set = new HashSet<>();
+    int kcount = 0;
 
-      return -1;
+    for (int n : numbers) {
+        if(set.contains(n -k)) { //check if it is in the set
+            kcount++;
+        } // n^2 complexity
+        if (set.contains(n + k)) {
+            kcount++;
+        } // n complexity
+        set.add(n);
+    } 
+
+    //when there is no valid pairs
+    if (kcount == 0) {
+        return -1;
+    }
+    return kcount; 
   }
 
 } /* end class HashingProblems */
